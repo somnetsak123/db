@@ -8,7 +8,9 @@ export default class Register extends Component{
         this.state = {
             idkey:"",
             firstname:"",
-            lastname:""
+            lastname:"",
+            email:"",
+            Class:""
         }
         this.handleChang = this.handleChang.bind(this);
         this.handleClicked = this.handleClicked.bind(this);
@@ -23,13 +25,17 @@ export default class Register extends Component{
         let data = {
             idkey:this.state.idkey,
             firstname:this.state.firstname,
-            lastname:this.state.lastname
+            lastname:this.state.lastname,
+            email:this.state.email,
+            Class:this.state.Class
         }
         axios.post(url,data)
         this.setState({
             idkey:"",
             firstname:"",
-            lastname:""
+            lastname:"",
+            email:"",
+            Class:""
         });
     }
 
@@ -48,6 +54,17 @@ export default class Register extends Component{
                     <div className="form-group">
                         <label className="text-white"  >Last Name</label>
                         <input type="text" className="form-control" id="lastname" onChange={this.handleChang} value={this.state.lastname}/>
+                    </div>
+                    <div className="form-group">
+                        <label className="text-white"  >Email</label>
+                       
+                        <input type="text" className="form-control" id="lastname" onChange={this.handleChang} value={this.state.email=JSON.parse(localStorage.getItem('user')).email}/>
+                        
+                            
+                    </div>
+                    <div className="form-group">
+                    <label className="text-white"  >Class EL ro CT</label>
+                    <input type="text" className="form-control"  id="Class"  onChange={this.handleChang}  value={this.state.Class}/>
                     </div>
                     <div className="form-group">
                         <label className="text-white"  htmlFor="id">Id</label>

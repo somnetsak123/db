@@ -13,6 +13,8 @@ export default class Showdata extends Component{
             idkey:"",
             firstname:"",
             lastname:"",
+            email:"",
+            Class:"",
             time:""
         }
         this.handleChang = this.handleChang.bind(this);
@@ -58,7 +60,10 @@ export default class Showdata extends Component{
             idkey:user.id_D,
             firstname:user.firstname_D,
             lastname:user.lastname_D,
+            email:user.Email_D,
+            Class:user.Class_D,
             time:user.time_D
+
         })
     }
     handleChang = (e) => {
@@ -70,6 +75,8 @@ export default class Showdata extends Component{
             idkey:this.state.idkey,
             firstname:this.state.firstname,
             lastname:this.state.lastname,
+            email:this.state.email,
+            Class:this.state.Class,
             time:this.state.time
         }
         axios.put(url,data)
@@ -79,15 +86,19 @@ export default class Showdata extends Component{
         let url = `https://localhost:3000/data`;
         let data = {
             idkey:this.state.idkey,
-            firstname:this.state.firstname,
-            lastname:this.state.lastname,
-            time:this.state.time
+            firstname_D:this.state.firstname,
+            lastname_D:this.state.lastname,
+            Email_D:this.state.email,
+            Class_D:this.state.Class,
+            time_D:this.state.time
         }
         axios.put(url,data)
         this.setState({
             idkey:"",
             firstname:"",
             lastname:"",
+            email:"",
+            Class:"",
             time:""
         });
 	this.closeModal();
@@ -107,6 +118,8 @@ export default class Showdata extends Component{
                             <th>ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Class</th>
                             <th>Time</th>
                             </tr>
                         </thead>
@@ -117,6 +130,8 @@ export default class Showdata extends Component{
                                             <td>{user.id_D}</td>
                                             <td>{user.firstname_D}</td>
                                             <td>{user.lastname_D}</td>
+                                            <td>{user.Email_D}</td>
+                                            <td>{user.Class_D}</td>
                                             <td>{user.time_D}</td>
                                             <td><button type="button" class="btn btn-warning" onClick={()=>this.call(user)}>Edit</button></td>
                                             <td><button type="button" class="btn btn-danger"  onClick={()=>this.onDelete(user)}>Delet</button></td>
@@ -139,10 +154,18 @@ export default class Showdata extends Component{
                                                             <label>lasttname:</label>
                                                             <input type="text" className="form-control" id="lastname" onChange={this.handleChang} value={this.state.lastname}/>
                                                         </div>
+                                                        {/* <div className="form-group">
+                                                            <label>Email:</label>
+                                                            <input type="text" className="form-control" id="email" onChange={this.handleChang} value={this.state.email}/>
+                                                        </div> */}
                                                         <div className="form-group">
+                                                            <label>class:</label>
+                                                            <input type="text" className="form-control" id="class_1" onChange={this.handleChang} value={this.state.Class}/>
+                                                        </div>
+                                                        {/* <div className="form-group">
                                                             <label>Time:</label>
                                                             <input type="text" className="form-control" id="time" onChange={this.handleChang} value={this.state.time}/>
-                                                        </div>
+                                                        </div> */}
                                                         <button type="button" className="btn btn-primary" onClick={this.handleClicked}>Submit</button>
                                                     </form>
                                                 </Modal>

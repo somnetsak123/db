@@ -59,7 +59,9 @@ app.post('/data', function(req, res){
     let data = {
         id_D:req.body.idkey,
         firstname_D:req.body.firstname,
-        lastname_D:req.body.lastname
+        lastname_D:req.body.lastname,
+        Email_D:req.body.email,
+        Class_D:req.body.Class,
     };
     let sql = 'INSERT INTO regi SET ?';
     db.query(sql, data, (err, result)=>{
